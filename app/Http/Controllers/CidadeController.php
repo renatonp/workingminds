@@ -9,7 +9,7 @@ class CidadeController extends Controller
 {
     public function index(){
         $Cidades = Cidade::get();
-        return json_decode($Cidades);
+        echo json_decode($Cidades);
     }
 
     public function store(Request $request){
@@ -23,10 +23,10 @@ class CidadeController extends Controller
             $Cidade->nome = $request->nome;
             $Cidade->id_estado_associado = $request->id_estado_associado;
             $Cidade->save();
-            return json_decode(['msg' => 'Registro salvo com sucesso.']);
+            echo json_decode(['msg' => 'Registro salvo com sucesso.']);
         }
         else{
-            return json_decode(['msg' => 'Estado associado não-encontrado.']);
+            echo json_decode(['msg' => 'Estado associado não-encontrado.']);
         }
     }
 
@@ -49,18 +49,18 @@ class CidadeController extends Controller
                     $Cidade->nome = $request->nome;
                     $Cidade->id_estado_associado = $request->id_estado_associado;
                     $Cidade->save();
-                    return json_decode(['msg' => 'Registro atualizado com sucesso.']);
+                    echo json_decode(['msg' => 'Registro atualizado com sucesso.']);
                 }
                 else{
-                    return json_decode(['msg' => 'Estado associado não-encontrado.']);
+                    echo json_decode(['msg' => 'Estado associado não-encontrado.']);
                 }
             }
             else{
-                return json_decode(['msg' => 'Registro não-encontrado.']);
+                echo json_decode(['msg' => 'Registro não-encontrado.']);
             }
         }
         else{
-            return json_decode(['msg' => 'Registro não-encontrado.']);
+            echo json_decode(['msg' => 'Registro não-encontrado.']);
         }
     }
 
@@ -74,14 +74,14 @@ class CidadeController extends Controller
             if($id > 0){
                 $Cidade = Cidade::find($request->id);
                 $Cidade->delete();
-                return json_decode(['msg' => 'Registro removido com sucesso.']);
+                echo json_decode(['msg' => 'Registro removido com sucesso.']);
             }
             else{
-                return json_decode(['msg' => 'Registro não-encontrado.']);
+                echo json_decode(['msg' => 'Registro não-encontrado.']);
             }
         }
         else{
-            return json_decode(['msg' => 'Registro não-encontrado.']);
+            echo json_decode(['msg' => 'Registro não-encontrado.']);
         }
     }
 }
